@@ -29,7 +29,7 @@ def compose(*funcs):
 
 
 def concatReducer(acc, e):
-    return [*acc, e] if (e is not None or e is 0) else [*acc]
+    return [*acc, e] if (e is not None or e == 0) else [*acc]
 
 
 def mapT(func):
@@ -41,7 +41,7 @@ def filterT(pred):
 
 
 def foldT(f):
-    return lambda x: lambda reducer: lambda acc, e: reducer(acc, f(x, e)) if len(acc) is 0 else reducer(acc, f(acc[-1], e))
+    return lambda x: lambda reducer: lambda acc, e: reducer(acc, f(x, e)) if len(acc) == 0 else reducer(acc, f(acc[-1], e))
 
 
 def takeT(n):
